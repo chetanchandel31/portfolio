@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>blogs | chetan</title>
+    <title>blogs | Chetan</title>
     <link rel='stylesheet' href='./style.css'>
 </head>
 <body>
@@ -26,28 +26,8 @@
         <h1 class='hero-heading'>My <span class='heading-inverted'>blogs</span></h1>
     </header>
 
-    <ul class='list-non-bullet'>
-        <li>
-            <div class='container container-center'>
-                <h1>Dummy Blog</h1>
-                <small>December, 2020</small>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec...</p>
-
-                <a class='link link-primary' href='./blogs/blog1.html'>Read more</a>
-                <hr>
-            </div>
-        </li>
-        
-        <li>
-           <div class='container container-center'>
-                <h1>Another Dummy Blog</h1>
-                <small>December, 2020</small>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large...</p>
-
-                <a class='link link-primary' href='./blogs/blog2.html'>Read more</a>
-                <!-- <hr> -->
-           </div>
-        </li>
+    <ul class='list-non-bullet' id='blogsList'>
+        <!-- js injects code here -->
     </ul>
 
     <footer class='footer footer-whitespace'>
@@ -64,5 +44,40 @@
             </li>
         </ul>
     </footer>
+
+    <script>
+        const listEl = document.querySelector('#blogsList');
+
+        let blogsArr = [
+            {
+                name: "Dummy Blog",
+                date: "December, 2020",
+                desc: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec...",
+                link: "./blogs/blog1.html",
+            },
+            {
+                name: "Another Dummy Blog",
+                date: "December, 2020",
+                desc: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large...",
+                link: "./blogs/blog2.html",
+            }
+        ]
+
+        const listItems = blogsArr.map((blog, i) => `
+        <li key='${i}'>
+            <div class='container container-center'>
+                 <h1>${blog.name}</h1>
+                 <small>${blog.date}</small>
+                 <p>${blog.desc}</p>
+ 
+                 <a class='link link-primary' href="${blog.link}">Read more</a>
+                 ${i !== blogsArr.length - 1? '<hr>': ''}
+            </div>
+        </li>
+        `);
+
+        const joinedListItems = listItems.join('');
+        listEl.innerHTML = joinedListItems;
+    </script>
 </body>
 </html>

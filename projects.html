@@ -26,78 +26,8 @@
         <h1 class='hero-heading'>My <span class='heading-inverted'>projects</span></h1>
     </header>
 
-    <ul class='list-non-bullet'>
-        <li>
-            <div class='container container-center'>
-                <h1>Good Recommendations</h1>
-                <small>December, 2020</small>
-                <p>Here you will some good recommendations for anime, books and games. A very basic UI made using React JS.</p>
-
-                <a class='link link-primary' href='https://good-recommendations.netlify.app/'>View project</a>
-                <a class='link link-secondary' href='https://github.com/chetanchandel31/good-recommendations'>View code</a>
-                <hr>
-            </div>
-        </li>
-
-        <li>
-           <div class='container container-center'>
-                <h1>Emoji Interpretor</h1>
-                <small>December, 2020</small>
-                <p>It tells you the meanings of some lesser popular plant based emojis.</p>
-
-                <a class='link link-primary' href='https://emoji-translator31.netlify.app/'>View project</a>
-                <a class='link link-secondary' href='https://github.com/chetanchandel31/emoji-interpretor'>View code</a>
-                <hr>
-           </div>
-        </li>
-
-        <li>
-            <div class='container container-center'>
-                 <h1>Fun Translator</h1>
-                 <small>December, 2020</small>
-                 <p>A web app which uses fun-translation API to convert your message to different languages. It lets you speak like yoda, Shakespeare, pirates and other interesting characters.</p>
- 
-                 <a class='link link-primary' href='https://translator-31.netlify.app/'>View project</a>
-                 <a class='link link-secondary' href='https://github.com/chetanchandel31/translator'>View code</a>
-                 <hr>
-            </div>
-         </li>
-
-         <li>
-            <div class='container container-center'>
-                 <h1>Minion Translator</h1>
-                 <small>December, 2020</small>
-                 <p>Are you a fan of minions? Did you know that the gibberish they say is an actual language. Use the translator to convert your text from English to Minion speak or Banana language.</p>
- 
-                 <a class='link link-primary' href='https://minion-translator31.netlify.app/'>View project</a>
-                 <a class='link link-secondary' href='https://github.com/chetanchandel31/minion-translator'>View code</a>
-                 <hr>
-            </div>
-         </li>
-
-         <li>
-            <div class='container container-center'>
-                 <h1>CSS quiz</h1>
-                 <small>December, 2020</small>
-                 <p>A CLI app built with nodeJS. It's a quiz which covers some CSS based questions.</p>
- 
-                 <a class='link link-primary' href='https://repl.it/@chetanchandel31/CSS-quiz?embed=1&output=1#index.js'>View project</a>
-                 <a class='link link-secondary' href='https://github.com/chetanchandel31/css-quiz'>View code</a>
-                 <hr>
-            </div>
-         </li>
-
-         <li>
-            <div class='container container-center'>
-                 <h1><i>Do you know me?</i> quiz</h1>
-                 <small>December, 2020</small>
-                 <p>A very basic CLI quiz app built with nodeJS.</p>
- 
-                 <a class='link link-primary' href='https://repl.it/@chetanchandel31/quiz?embed=1&output=1#index.js'>View project</a>
-                 <a class='link link-secondary' href='https://github.com/chetanchandel31/first-quiz'>View code</a>
-                 <!-- <hr> -->
-            </div>
-         </li>
+    <ul class='list-non-bullet' id='projectsList'>
+        <!-- js injects code here -->
     </ul>
 
     <footer class='footer footer-whitespace'>
@@ -114,5 +44,75 @@
             </li>
         </ul>
     </footer>
+
+    <script>
+        const listEl = document.querySelector('#projectsList');
+
+        let projectArr = [
+            {
+                name: "Good Recommendations",
+                date: "December, 2020",
+                desc: "Here you will some good recommendations for anime, books and games. A very basic UI made using React JS.",
+                liveURL: "https://good-recommendations.netlify.app/",
+                codeURL: "https://github.com/chetanchandel31/good-recommendations"
+            },
+            {
+                name: "Emoji Interpretor",
+                date: "December, 2020",
+                desc: "It tells you the meanings of some lesser popular plant based emojis.",
+                liveURL: "https://emoji-translator31.netlify.app/",
+                codeURL: "https://github.com/chetanchandel31/emoji-interpretor"
+            },
+            {
+                name: "Fun Translator",
+                date: "December, 2020",
+                desc: "A web app which uses fun-translation API to convert your message to different languages. It lets you speak like yoda, Shakespeare, pirates and other interesting characters.",
+                liveURL: "https://translator-31.netlify.app/",
+                codeURL: "https://github.com/chetanchandel31/translator"
+            },
+            {
+                name: "Minion Translator",
+                date: "December, 2020",
+                desc: "Are you a fan of minions? Did you know that the gibberish they say is an actual language. Use the translator to convert your text from English to Minion speak or Banana language.",
+                liveURL: "https://minion-translator31.netlify.app/",
+                codeURL: "https://github.com/chetanchandel31/minion-translator"
+            },
+            {
+                name: "CSS quiz",
+                date: "December, 2020",
+                desc: "A CLI app built with nodeJS. It's a quiz which covers some CSS based questions.",
+                liveURL: "https://repl.it/@chetanchandel31/CSS-quiz?embed=1&output=1#index.js",
+                codeURL: "https://github.com/chetanchandel31/css-quiz"
+            },
+            {
+                name: "<i>Do you know me?</i> quiz",
+                date: "December, 2020",
+                desc: "A very basic CLI quiz app built with nodeJS.",
+                liveURL: "https://repl.it/@chetanchandel31/quiz?embed=1&output=1#index.js",
+                codeURL: "https://github.com/chetanchandel31/first-quiz"
+            }
+
+        ];
+
+        const listItems = projectArr.map((project, i) => `
+        <li key='${i}'>
+            <div class='container container-center'>
+                 <h1>${project.name}</h1>
+                 <small>${project.date}</small>
+                 <p>${project.desc}</p>
+ 
+                 <a class='link link-primary' href="${project.liveURL}">View project</a>
+                 <a class='link link-secondary' href='${project.codeURL}'>View code</a>
+                 ${i !== projectArr.length - 1? '<hr>': ''}
+            </div>
+        </li>
+        `);
+
+        const joinedListItems = listItems.join('');
+        listEl.innerHTML = joinedListItems;
+
+
+    </script>
+
 </body>
 </html>
